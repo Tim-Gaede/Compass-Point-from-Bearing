@@ -1,4 +1,6 @@
 #-------------------------------------------------------------------------------
+# Timothy Gaede 2019-08-23
+#
 # Returns the compass point from a bearing given in degrees
 # Can use the 4-point, 8-point, 16-point, or 32-point set
 # NOTE: "North by Northwest" is a movie, not a compass point.
