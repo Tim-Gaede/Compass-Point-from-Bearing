@@ -36,7 +36,7 @@ function compassPt(bearing°::Number, num_chars::Int)
     if b ≥ 360 - point_span° / 2  ||  b < point_span° / 2
         index = 1
     else
-        index = convert(Int64, floor((bearing° / point_span°) + 1.5))
+        index = convert(Int64, floor((b / point_span°) + 1.5))
     end
 
 
