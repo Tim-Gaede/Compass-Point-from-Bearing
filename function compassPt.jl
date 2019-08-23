@@ -1,9 +1,9 @@
 #-------------------------------------------------------------------------------
 # Timothy Gaede 2019-08-23
 #
-# Returns the compass point from a bearing given in degrees
-# Can use the 4-point, 8-point, 16-point, or 32-point set
-# NOTE: "North by Northwest" is a movie, not a compass point.
+# Returns the compass pt from a bearing given in degrees
+# Can use the 4-pt, 8-pt, 16-pt, or 32-pt set
+# NOTE: "North by Northwest" is a movie, not a compass pt.
 function compassPt(bearing°::Number, num_chars::Int)
 
     if num_chars < 1  ||  num_chars > 4
@@ -11,38 +11,39 @@ function compassPt(bearing°::Number, num_chars::Int)
     end
 
     # Take care of bearings greater than 360° or less than 0°...................
-    b = bearing° % 360
-    if b < 0;    b += 360; end
+    b° = bearing° % 360
+    if b° < 0;    b° += 360; end
     #...........................................................................
 
 
 
-    points1 = ['N', 'E', 'S', 'W']
+    pts1 = ['N', 'E', 'S', 'W']
 
-    points2 = ["N ", "NE", "E ", "SE", "S ", "SW", "W ", "NW"]
+    pts2 = ["N ", "NE", "E ", "SE", "S ", "SW", "W ", "NW"]
 
-    points3 = [" N ", "NNE", "NE ", "ENE", " E ", "ESE", "SE ", "SSE",
-               " S ", "SSW", "SW ", "WSW", " W ", "WNW", "NW ", "NNW"]
+    pts3 = [" N ", "NNE", "NE ", "ENE", " E ", "ESE", "SE ", "SSE",
+            " S ", "SSW", "SW ", "WSW", " W ", "WNW", "NW ", "NNW"]
 
-    points4 = [" N  ", "NbE ", "NNE ", "NEbN", " NE ", "NEbE", "ENE ", "EbN ",
-               " E  ", "EbS ", "ESE ", "SEbE", " SE ", "SEbS", "SSE ", "SbE ",
-               " S  ", "SbW ", "SSW ", "SWbS", " SW ", "SWbW", "WSW ", "WbS ",
-               " W  ", "WbN ", "WNW ", "NWbW", " NW ", "NWbN", "NNW ", "NbW "]
+    pts4 = [" N  ", "NbE ", "NNE ", "NEbN", " NE ", "NEbE", "ENE ", "EbN ",
+            " E  ", "EbS ", "ESE ", "SEbE", " SE ", "SEbS", "SSE ", "SbE ",
+            " S  ", "SbW ", "SSW ", "SWbS", " SW ", "SWbW", "WSW ", "WbS ",
+            " W  ", "WbN ", "WNW ", "NWbW", " NW ", "NWbN", "NNW ", "NbW "]
 
-    points = [points1, points2, points3, points4]
+    pts = [pts1, pts2, pts3, pts4]
 
-    point_span° = 360 / 2^(num_chars + 1)
+    pt_span° = 360 / 2^(num_chars + 1)
 
-    if b ≥ 360 - point_span° / 2  ||  b < point_span° / 2
+    if b° ≥ 360 - pt_span° / 2  ||  b° < pt_span° / 2
         index = 1
     else
-        index = convert(Int64, floor((b / point_span°) + 1.5))
+        index = convert(Int64, floor((b° / pt_span°) + 1.5))
     end
 
 
-    points[num_chars][index]
+    pts[num_chars][index]
 end
 #-------------------------------------------------------------------------------
+
 
 
 
