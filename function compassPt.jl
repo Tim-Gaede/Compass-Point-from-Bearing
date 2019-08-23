@@ -2,7 +2,8 @@
 # Timothy Gaede 2019-08-23
 #
 # The function returns the compass point from a bearing given in degrees.
-# The returned compass point may be from any of 4, 8, 16, or 32 point standards.
+# The returned compass point may be from any of the four 
+# (4, 8, 16, or 32 point) standards.
 # NOTE: "North by Northwest" is a movie, not a compass point.
 function compassPt(bearing°::Number, num_chars::Int)
 
